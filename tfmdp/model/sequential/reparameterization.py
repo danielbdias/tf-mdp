@@ -81,7 +81,7 @@ class ReparameterizationSampling(MarkovRecurrentModel):
                 self.inputs = tf.concat([self.timesteps, self.noise], axis=2)
 
             with tf.compat.v1.name_scope('trajectory'):
-                outputs, final_state = tf.nn.dynamic_rnn(self.cell,
+                outputs, final_state = tf.compat.v1.nn.dynamic_rnn(self.cell,
                                                          self.inputs,
                                                          initial_state=initial_state,
                                                          dtype=tf.float32)

@@ -109,11 +109,11 @@ class Value():
                     size = np.prod(size, dtype=np.int32)
 
                     fluent = tf.reshape(fluent, [-1, size], name='fluent_input')
-                    fluent_norm = tf.layers.batch_normalization(fluent, training=self._training)
+                    fluent_norm = tf.compat.v1.layers.batch_normalization(fluent, training=self._training)
 
-                    weights = tf.layers.dense(t, size, name='weigths')
+                    weights = tf.compat.v1.layers.dense(t, size, name='weigths')
                     logits = tf.multiply(weights, fluent_norm, name='logits')
-                    logits = tf.layers.dense(logits, 128, activation=tf.nn.elu)
+                    logits = tf.compat.v1.layers.dense(logits, 128, activation=tf.nn.elu)
 
                     outputs.append(logits)
 

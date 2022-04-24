@@ -16,7 +16,7 @@
 
 import rddlgym
 
-from tfmdp.planner import PolicyOptimizationPlanner
+from tfmdp.planning.planner import PolicyOptimizationPlanner
 
 import numpy as np
 import itertools

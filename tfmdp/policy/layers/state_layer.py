@@ -54,6 +54,7 @@ class StateLayer(tf.compat.v1.layers.Layer):
         for tensor in inputs:
             layer = self.flatten(tensor)
             if self.input_layer_norm:
-                layer = tf.contrib.layers.layer_norm(layer)
+                layer_normalization = tf.keras.layers.LayerNormalization()
+                layer = layer_normalization(layer)
             state_layers.append(layer)
         return tf.concat(state_layers, axis=1)

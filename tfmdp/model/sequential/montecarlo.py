@@ -67,7 +67,7 @@ class MonteCarloSampling(MarkovRecurrentModel):
             with tf.name_scope('trajectory'):
                 batch_size = int(initial_state[0].shape[0])
                 inputs = self.timesteps(horizon, batch_size)
-                outputs, final_state = tf.nn.dynamic_rnn(self.cell,
+                outputs, final_state = tf.compat.v1.nn.dynamic_rnn(self.cell,
                                                          inputs,
                                                          initial_state=initial_state,
                                                          dtype=tf.float32)

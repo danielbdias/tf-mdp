@@ -6,7 +6,10 @@ docs:
 	sphinx-build docs docs/_build/html
 
 test:
-	python3 -m unittest -v tests/*.py
+	pytest tests/*.py -sv --disable-warnings 2>/dev/null
+
+test/quiet:
+	pytest tests/*.py --quiet --disable-warnings 2>/dev/null
 
 upload:
 	[ -e "dist/" ] && rm -Rf dist/
